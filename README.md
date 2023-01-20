@@ -3,7 +3,7 @@
 
 > Multiple processes accessing a shared resource concurrently
 
-## Oveview
+## Overview
 
 This example starts up a shared database and three different processes.
 
@@ -123,7 +123,7 @@ Do a web search on the sqlite3 'database is locked' error.
 
 ## Deadlock
 
-Deadlock is a special kind of locking issue where a proces 
+Deadlock is a special kind of locking issue where a process 
 is waiting on a resource or process, that is waiting also. 
 
 Rather than crashing, a system in deadlock may wait indefinitely, 

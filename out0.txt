@@ -40,7 +40,15 @@ SUCCESS! All processes are done.
 Now - increase the task duration (representing 
       the time the task has the database 
       tied up during an insert statement).
+
+NOTES
 How well do the multiple, concurrent processes share a database 
-when each task can take more time? 
+when each task can take more time?
+
+ANSWER: When each task was assigned more time it locked up the database. 
+
 How can we let multiple processes share a resource
 without interfering with each other?
+
+ANSWER: Mutexes, semaphores, and condition variables can be used 
+when implementing multiprogramming. 
