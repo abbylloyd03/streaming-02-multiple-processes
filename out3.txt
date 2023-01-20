@@ -5,3 +5,49 @@ This will clear the console output.
 Run the file once while the tasks are longer. 
 
 Copy and paste the terminal results (when task_duration is 3) here.
+
+(base) Abby@Abbys-Air streaming-02-multiple-processes % /usr/bin/python3 "/Users/Abby/Documents/44-671 Streaming Data/Module 2/strea
+ming-02-multiple-processes/multiple_processes.py"
+
+
+STARTING UP.............................
+It's 2023-01-14 at 09:54 AM
+
+This file is running on:    posix Darwin 21.6.0
+The Python version is:      3.9.6
+ 
+The Python interpreter is at: 
+ /Library/Developer/CommandLineTools/usr/bin/python3
+
+
+DELETED tabble pets.
+CREATED table pets.
+
+P1 getting ready to insert Ace the Dog.
+P1 ADDED Ace the Dog.
+P2 getting ready to insert Cooper the Rabbit.
+P3 getting ready to insert Emma the Rabbit.
+P1 getting ready to insert Buddy the Dog.
+P1 ADDED Buddy the Dog.
+Process Process-2:
+Process Process-3:
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/Abby/Documents/44-671 Streaming Data/Module 2/streaming-02-multiple-processes/multiple_processes.py", line 110, in process_three
+    insert_pet("P3","Emma", "Rabbit")
+  File "/Users/Abby/Documents/44-671 Streaming Data/Module 2/streaming-02-multiple-processes/multiple_processes.py", line 95, in insert_pet
+    cur.execute(sql)
+sqlite3.OperationalError: database is locked
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/Abby/Documents/44-671 Streaming Data/Module 2/streaming-02-multiple-processes/multiple_processes.py", line 106, in process_two
+    insert_pet("P2", "Cooper", "Rabbit")
+  File "/Users/Abby/Documents/44-671 Streaming Data/Module 2/streaming-02-multiple-processes/multiple_processes.py", line 95, in insert_pet
+    cur.execute(sql)
+sqlite3.OperationalError: database is locked

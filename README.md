@@ -1,4 +1,5 @@
 # streaming-02-multiple-processes
+## Abby Lloyd
 
 > Multiple processes accessing a shared resource concurrently
 
@@ -24,14 +25,26 @@ Executing multiple_processes.py script.
 Read the output. Read the code. 
 Try to figure out what's going on. 
 
-1. What libraries did we import?
-1. Where do we set the task_duration?
-1. How many functions are defined? 
-1. What are the function names? 
-1. In general, what does each function do? 
-1. Where does the execution begin?
-1. How many processes do we start?
-1. How many records does each process insert?
+1. What libraries did we import? 
+   - sqlite3, time, multiprocessing, os, datetime, platform, sys
+2. Where do we set the task_duration? 
+   - Line 34 
+3. How many functions are defined? 
+   - 7
+4. What are the function names? 
+   - create_table(), drop_table(), insert_pet(), process_one(), process_two(), process_three(), recreate_database()
+5. In general, what does each function do? 
+   - create_table() makes a tables named 'pets' using sqlite3   
+   - drop_table() drops the table named 'pets'
+   - insert_pet() adds a row to the table 'pets' with the pet name and breed
+   - process_one(), process_two(), and process_three() all call insert_pet() to add pet names and breeds to the 'pets' table
+   - recreate_database() deletes the table 'pets' and creates a new empty table named 'pets'
+6. Where does the execution begin? 
+   - Line 132 
+7. How many processes do we start? 
+   - 3
+8. How many records does each process insert? 
+   - 2
 
 In this first run, we start 3 processes, 
 each inserting 2 records into a shared database 
@@ -79,14 +92,13 @@ On a Mac the select all, copy, paste hotkeys are:
 
 Detailed copy/paste instructions (as needed)
 
-1. To use these keys to transfer your output into a file, 
-clear the terminal, run the script, then click in the terminal to make it active.
-1. To select all terminal content, hold CTRL and the 'a' key together. 
-1. To copy the selected content, hold CTRL and the 'c' key together. 
-1. To paste, open the destination file (e.g. out0.py) for editing.
-1. Click somewhere in the destination file to make it the active window.
-1. Now hit CTRL a (both together) to select all of the destination file.
-1. Hit CTRL v (both together) to paste the content from your clipboard.
+1. To use these keys to transfer your output into a file, clear the terminal, run the script, then click in the terminal to make it active.
+2. To select all terminal content, hold CTRL and the 'a' key together. 
+3. To copy the selected content, hold CTRL and the 'c' key together. 
+4. To paste, open the destination file (e.g. out0.py) for editing.
+5. Click somewhere in the destination file to make it the active window.
+6. Now hit CTRL a (both together) to select all of the destination file.
+7. Hit CTRL v (both together) to paste the content from your clipboard.
 
 Do a web search to find helpful videos on anything that seems confusing. 
 
@@ -95,15 +107,18 @@ Do a web search to find helpful videos on anything that seems confusing.
 Python has pretty helpful error messages. 
 When you get an error, read them carefully. 
 
-- What error do you get?
-- Can you tell what line it was executing when it failed?
+- What error do you get? 
+  - sqlite3.OperationalError: database is locked
+- Can you tell what line it was executing when it failed? 
+  - insert_pet("P2", "Cooper", "Rabbit")
 
 
 ## Database Is Locked Error
 
 Do a web search on the sqlite3 'database is locked' error.
 
-- What do you learn?
+- What do you learn? 
+  - "This error occurs when more than one process is using the same session file, that is, when you run two or more clients at the same time using the same session name or in case another program has accessed the file" from https://docs.pyrogram.org/faq/sqlite3-operationalerror-database-is-locked
 - Once a process fails, it crashes the main process and everything stops. 
 
 ## Deadlock
@@ -117,3 +132,20 @@ with no process able to move forward and make progress.
 ## Learn More
 
 Check out Wikipedia's article on deadlock and other sources to learn how to prevent and avoid locking issues in concurrent processes. 
+
+Notes:
+
+Conditions for deadlock:
+- Mutual Exclusion
+- No Preemption: no force stopping a process
+- Hold and Wait
+- Circular Wait
+
+Deadlock handling methods:
+- Prevention
+- Avoidance
+- Detection and Recovery
+- Ignorance
+
+
+
