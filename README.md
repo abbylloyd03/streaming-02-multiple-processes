@@ -147,5 +147,9 @@ Deadlock handling methods:
 - Detection and Recovery
 - Ignorance
 
+## Process Streaming
 
+This section uses the socket package to stream data. 
+Hotel reservation data taken from Kaggle is sent using a socket object.
+The Messages sent are also output to out9.txt.
 
